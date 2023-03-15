@@ -224,8 +224,12 @@
   left: 12%;
   z-index: 30;
   overflow: hidden;
-  visibility: hidden;
-  display: none;
+  
+  &:not(._active) {
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+  }
 
   .slide-card {
     &__header {
@@ -247,11 +251,6 @@
         z-index: 40;
       }
     }
-  }
-  &._active {
-    overflow: visible;
-    visibility: visible;
-    display: block;
   }
   .close {
     top: 50%;

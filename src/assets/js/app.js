@@ -225,10 +225,10 @@ import { statSwiperTemplate, accounts } from "./file2.js";
 const mySwiper = document.querySelector('.mySwiper');
 const swiperPaginationEls = ['BRAND STRATEGY', 'SOCIAL MEDIA', 'TARGET', 'MARKETING STRATEGY', 'ANALYTICS', 'APPS', 'MUSIC', 'E-COMMERCE'];
 const paginationContainer = document.querySelector('.slider__pagination');
-
+let mySwiperPagination = null;
 let swiper = new Swiper(mySwiper, {
   effect: "fade",
-  loop: true,
+  loop: false,
   autoplay: false,
   loopedSlides: 1,
   slidesPerView: 1,
@@ -255,6 +255,7 @@ let swiper = new Swiper(mySwiper, {
   on: {
     afterInit(sw) {
       touchSwipe('.services__content', sw);
+      mySwiperPagination = document.querySelector('.slider__pagination');
     }
   }
 });
@@ -453,8 +454,7 @@ function openMockup(index) {
 }
 
 document.addEventListener('mousedown', (e) => {
-  console.log(e.composedPath().includes(paginationContainer));
-  if (mySwiper.classList.contains('_active') && !e.composedPath().includes(mySwiper) && !e.composedPath().includes(paginationContainer)) {
+  if (mySwiper.classList.contains('_active') && !e.composedPath().includes(mySwiper) && !e.composedPath().includes(mySwiperPagination)) {
     mySwiper.classList.remove('_active');
   }
 
