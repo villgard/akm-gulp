@@ -1,0 +1,48 @@
+.services {
+  padding-top: 80px;
+  margin-bottom: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  &__heading {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+  }
+  &__title {
+    padding: 40px 0;
+  }
+  &__caption {
+    margin-bottom: 60px;
+    overflow: hidden;
+  }
+  &__content {
+    max-width: 540px;
+    width: 100%;
+  }
+  &__link {
+    font-size: 16px;
+    padding: 2px 6px;
+    background-color: #1a1a1a;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .services {
+    height: 730px;
+    margin-bottom: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    &__content {
+      position: absolute;
+      bottom: 170px;
+      height: auto;
+      width: calc(100% - 40px);
+      left: 20px;
+    }
+    &__caption  {
+      margin-bottom: 480px;
+    }
+  }
+}

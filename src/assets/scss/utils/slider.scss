@@ -1,0 +1,333 @@
+.swiper {
+  @media (max-width: 767px) {
+    width: 240px;
+  }
+  
+  @media (min-width: 768px) {
+    width: 300px;
+  }
+
+  &-slide {
+    overflow:visible;
+
+    img {
+      width: 100%;
+      transform: rotateX(14deg);
+      transition: 300ms ease-in-out;
+      transform-origin: center;
+    }
+  }
+}
+
+.slider {
+  &__nav {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+
+    & > div {
+      display: flex;
+      transform: translateY(-50%);
+      transition: 200ms ease-in-out;
+      cursor: pointer;
+      pointer-events: auto;
+      &:hover {
+        opacity: .6;
+      }
+    }
+  }
+
+  &__prev {
+    position: absolute;
+    top: 50%;
+    left: 36px;
+  }
+
+  &__next {
+    position: absolute;
+    top: 50%;
+    right: 36px;
+  }
+
+  &__brecket {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 19px;
+
+    @media (max-width: 767px) {
+      width: 15px;
+    }
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+      transform: translateY(-50%) scaleX(-1);
+    }
+  }
+}
+
+.slide-card {
+  position: relative;
+  height: 434px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  .mask{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #1A1A1A;
+    backdrop-filter: blur(50px);
+  }
+  & > * {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &__header {
+    max-height: 100px;
+    height: 100%;
+    border-radius: 15px;
+    border: 1px solid #676767;
+    border-bottom-color: transparent;
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      width: 15px;
+      height: 15px;
+      border-bottom: 1px solid #676767;
+    }
+    &::before {
+      border-radius: 0 0 0 15px;
+      border-left: 1px solid #676767;
+      left: -1px;
+    }
+    &::after {
+      border-radius: 0 0 15px 0;
+      border-right: 1px solid #676767;
+      right: -1px;
+    }
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+    }
+    img {
+      object-fit: cover;
+    }
+  }
+  &__caption {
+    padding: 15px;
+    height: 330px;
+    border-radius: 15px;
+    border: 1px solid #676767;
+    border-top-color: transparent;
+    position: relative;
+    flex-direction: column;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      width: 15px;
+      height: 15px;
+      border-top: 1px solid #676767;
+    }
+    &::before {
+      border-radius: 0 15px 0 0;
+      border-right: 1px solid #676767;
+      right: -1px;
+    }
+    &::after {
+      border-radius: 15px 0 0 0;
+      border-left: 1px solid #676767;
+      left: -1px;
+    }
+    p {
+      text-align: justify;
+      font-weight: 400;
+      line-height: 1.2;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-btn {
+      margin-bottom: 30px;
+      color: #cccccc;
+      span {
+        padding: 0 10px;
+        background: #1A1A1A;
+      }
+      &::after {
+        top: -4px;
+        bottom: -4px;
+      }
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+  &__logo {
+    max-width: 170px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.slide-modal {
+    & > .slide-card__caption {
+      justify-content: space-around;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .slide-card {
+    height: 100%;
+    &__header {
+      height: 80px;
+    }
+    &__caption {
+      height: 265px;
+      padding: 12px;
+      p {
+        font-size: 14px;
+        line-height: 1.1;
+      }
+    }
+  }
+}
+
+.mySwiper {
+  position: absolute;
+  top: 15%;
+  left: 12%;
+  z-index: 30;
+  overflow: hidden;
+  visibility: hidden;
+  display: none;
+
+  .slide-card {
+    &__header {
+      padding: 0 15px;
+    }
+    &__caption {
+      padding: 10px 15px;
+      height: 260px;
+      p {
+        line-height: 1;
+      }
+    }
+  }
+  .slider {
+    &__nav {
+      left: -120px;
+      width: 540px;
+      & > div {
+        z-index: 40;
+      }
+    }
+  }
+  &._active {
+    overflow: visible;
+    visibility: visible;
+    display: block;
+  }
+  .close {
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    span,
+    span::after {
+      background-color: #ffffff;
+    }
+  }
+}
+
+.slider__pagination {
+  max-width: 345px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  box-sizing: border-box;
+  .swiper-pagination-bullet {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    height: 20px;
+    padding: 15px 0 15px 20px;
+    border-radius: 0;
+    opacity: 1;
+    font-size: 20px;
+    line-height: 1;
+    background-color: transparent;
+    color: #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(45deg, rgb(237, 166, 84), rgb(242, 109, 61), rgb(216, 65, 110), rgb(122, 62, 211), rgb(87, 63, 218));
+      background-size: 200%;
+      animation: gradient 3s ease infinite;
+    }
+    &::after {
+      content: url('../../../assets/images/arrowNext.svg');
+      height: 30px;
+    }
+    &-active {
+      color: #ffffff;
+    }
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .mySwiper {
+    width: 300px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    .slide-card__caption {
+      height: 220px;
+      p {
+        font-size: 14px;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  .slider__pagination {
+    .swiper-pagination-bullet {
+      box-sizing: border-box;
+      height: 50px;
+    }
+  }
+}
