@@ -501,8 +501,8 @@ export const statSwiperTemplate = (index) => {
 
   return `
   <div class="slider__nav">
-    <div class="slider__prev swiperStat__prev"><img src="arrowPrev.svg" alt=""></div>
-    <div class="slider__next swiperStat__next"><img src="arrowNext.svg" alt=""></div>
+    <div class="slider__prev swiperStat__prev"><img src="./assets/images/arrowPrev.svg" alt=""></div>
+    <div class="slider__next swiperStat__next"><img src="./assets/images/arrowNext.svg" alt=""></div>
   </div>
   <div class="swiper swiperStat">
     <div class="swiper-wrapper">

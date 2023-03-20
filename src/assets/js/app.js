@@ -3,6 +3,7 @@ import JustValidate from "just-validate";
 const menu = document.getElementById('menu');
 const switcher = document.getElementById('switcher');
 const anchors = document.querySelectorAll('a[href^="#"]');
+let isMobile = window.innerWidth < 768;
 
 function toggleMenu(e) {
   e.preventDefault();
@@ -224,7 +225,7 @@ import { statSwiperTemplate, accounts } from "./file2.js";
 
 const mySwiper = document.querySelector('.mySwiper');
 const swiperPaginationEls = ['BRAND STRATEGY', 'SOCIAL MEDIA', 'TARGET', 'MARKETING STRATEGY', 'ANALYTICS', 'APPS', 'MUSIC', 'E-COMMERCE'];
-const paginationContainer = document.querySelector('.slider__pagination');
+
 let mySwiperPagination = null;
 let swiper = new Swiper(mySwiper, {
   effect: "fade",
@@ -277,9 +278,9 @@ closeBtns.forEach((b) => {
 });
 
 let swiperSec = new Swiper(".mySwiperSec", {
-  effect: "cards",
+  effect: "coverflow",
   loop: true,
-  slidesPerView: 1,
+  slidesPerView: 1.5,
   centeredSlides: true,
   autoplay: true,
   grabCursor: false,
@@ -290,10 +291,12 @@ let swiperSec = new Swiper(".mySwiperSec", {
   keyboard: {
     enabled: true,
   },
-  cardsEffect: {
-    rotate: false,
+  coverflowEffect: {
+    rotate: 0,
+    stretch: isMobile ? 130 : 170,
+    depth: isMobile ? 200 : 180,
+    modifier: 1,
     slideShadows: false,
-    perSlideOffset: 8,
   },
   navigation: {
     nextEl: '.mySwiperSec__next',
@@ -334,6 +337,7 @@ statBtn.addEventListener('click', () => openInfo(accIndex));
 
 
 function openInfo(index) {
+  swiperSec.autoplay.stop();
   statSliderContainer.classList.add('_active');
 
   statSliderContainer.innerHTML = statSwiperTemplate(index);
@@ -365,7 +369,10 @@ function openInfo(index) {
   const closeBtns = document.querySelectorAll('.close');
 
   closeBtns.forEach((btn) => {
-    btn.addEventListener('click', () => close(statSliderContainer))
+    btn.addEventListener('click', () => {
+      swiperSec.autoplay.start()
+      close(statSliderContainer);
+    })
   })
 }
 
