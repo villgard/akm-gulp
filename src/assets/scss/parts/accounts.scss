@@ -18,18 +18,6 @@
     max-width: 540px;
     width: 100%;
     position: relative;
-    .mySwiperSec {
-      width: 420px;
-    }
-  }
-}
-
-.mySwiperSec {
-  &__prev {
-    left: 24px;
-  }
-  &__next {
-    right: 24px;
   }
 }
 
@@ -255,7 +243,7 @@
     position: relative;
     &__heading {
       p {
-        margin-bottom: 440px;
+        margin-bottom: 400px;
       }
     }
     &__content {
@@ -263,14 +251,8 @@
       top: 200px;
       width: calc(100% - 30px);
     }
-    .swiper.mySwiperSec {
-      &.swiper-3d {
-        perspective: 2000px;
-      }
-      width: 300px;
-      &-slide {
-        width: 200px !important;
-      }
+    .swiper {
+      width: 180px;
     }
   }
   .slider-stat {

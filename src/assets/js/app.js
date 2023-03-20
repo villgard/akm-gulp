@@ -3,7 +3,6 @@ import JustValidate from "just-validate";
 const menu = document.getElementById('menu');
 const switcher = document.getElementById('switcher');
 const anchors = document.querySelectorAll('a[href^="#"]');
-let isMobile = window.innerWidth < 768;
 
 function toggleMenu(e) {
   e.preventDefault();
@@ -278,9 +277,9 @@ closeBtns.forEach((b) => {
 });
 
 let swiperSec = new Swiper(".mySwiperSec", {
-  effect: "coverflow",
+  effect: "cards",
   loop: true,
-  slidesPerView: 1.5,
+  slidesPerView: 1,
   centeredSlides: true,
   autoplay: true,
   grabCursor: false,
@@ -291,12 +290,10 @@ let swiperSec = new Swiper(".mySwiperSec", {
   keyboard: {
     enabled: true,
   },
-  coverflowEffect: {
-    rotate: 0,
-    stretch: isMobile ? 130 : 170,
-    depth: isMobile ? 200 : 180,
-    modifier: 1,
+  cardsEffect: {
+    rotate: false,
     slideShadows: false,
+    perSlideOffset: 8,
   },
   navigation: {
     nextEl: '.mySwiperSec__next',
